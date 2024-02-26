@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player";
 import { Loader } from "lucide-react";
-import { usePlayerProgress, useStore } from "../zustand-store";
+import { usePlayerProgress, useStore } from "../store";
 
 export function Video() {
   const { currentLesson } = usePlayerProgress();

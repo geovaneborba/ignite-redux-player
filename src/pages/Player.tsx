@@ -3,7 +3,7 @@ import { Header } from "../components/Header";
 import { Video } from "../components/Video";
 import { Module } from "../components/Module";
 import { useEffect } from "react";
-import { usePlayerProgress, useStore } from "../zustand-store";
+import { usePlayerProgress, useStore } from "../store";
 
 export function Player() {
   const { course, load } = useStore();

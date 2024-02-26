@@ -1,4 +1,4 @@
-import { usePlayerProgress, useStore } from "../zustand-store";
+import { usePlayerProgress, useStore } from "../store";
 
 export function Header() {
   const isLoading = useStore((store) => store.isLoading);
