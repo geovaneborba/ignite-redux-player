@@ -32,6 +32,9 @@ const initialState: PlayerState = {
 export const loadCourse = createAsyncThunk("player/load", async () => {
   const response = await api.get("/courses/1");
 
+  // fake fetch delay for loading courses
+  await new Promise((resolve) => setTimeout(resolve, 700));
+
   return response.data;
 });
 
@@ -84,7 +87,7 @@ export const { play, next } = playerSlice.actions;
 
 export const usePlayerProgress = () => {
   return useAppSelector((state) => {
-    const { currentLessonIndex, currentModuleIndex } = state.player;
+    const { currentLessonIndex, currentModuleIndex, isLoading } = state.player;
 
     const currentModule = state.player.course?.modules[currentModuleIndex];
     const currentLesson = currentModule?.lessons[currentLessonIndex];
@@ -94,6 +97,7 @@ export const usePlayerProgress = () => {
       currentLesson,
       currentModuleIndex,
       currentLessonIndex,
+      isLoading,
     };
   });
 };
