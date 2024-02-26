@@ -1,7 +1,18 @@
+import { useAppSelector } from "../store";
 import { usePlayerProgress } from "../store/slices/player";
 
 export function Header() {
   const { currentModule, currentLesson } = usePlayerProgress();
+  const isCourseLoading = useAppSelector((state) => state.player.isLoading);
+
+  if (isCourseLoading) {
+    return (
+      <div className="animate-pulse flex flex-col gap-y-2">
+        <div className="h-2 w-24 bg-zinc-800 rounded-full "></div>
+        <div className="h-2 w-48 bg-zinc-800 rounded-full"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-1">
