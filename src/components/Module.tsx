@@ -11,7 +11,13 @@ type ModuleProps = {
 };
 
 export function Module({ moduleIndex, title, amountOfLesson }: ModuleProps) {
-  const { currentModuleIndex, currentLessonIndex, play } = useStore();
+  const { currentModuleIndex, currentLessonIndex, play } = useStore((store) => {
+    return {
+      currentModuleIndex: store.currentModuleIndex,
+      currentLessonIndex: store.currentLessonIndex,
+      play: store.play,
+    };
+  });
 
   const currentModuleLessons = useStore(
     (state) => state.course?.modules[moduleIndex].lessons

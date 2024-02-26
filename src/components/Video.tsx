@@ -4,7 +4,13 @@ import { usePlayerProgress, useStore } from "../store";
 
 export function Video() {
   const { currentLesson } = usePlayerProgress();
-  const { isLoading, next } = useStore();
+
+  const { isLoading, next } = useStore((store) => {
+    return {
+      isLoading: store.isLoading,
+      next: store.next,
+    };
+  });
 
   const handlePlayNext = () => {
     next();
